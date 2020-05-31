@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1588149521 source:e:\c++ with love\de thay tan\okfine\main.cpp
+	<set>
+	<map>
+	<list>
+	<cmath>
+	<ctime>
+	<deque>
+	<queue>
+	<stack>
+	<bitset>
+	<cctype>
+	<cstdio>
+	<string>
+	<vector>
+	<cassert>
+	<cstdlib>
+	<cstring>
+	<sstream>
+	<iomanip>
+	<iostream>
+	<algorithm>
+
