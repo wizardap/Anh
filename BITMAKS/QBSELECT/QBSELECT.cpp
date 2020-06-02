@@ -7,17 +7,13 @@ int a[5][N],f[N][11],n;
 int ma=oo,ma2=-4e5;
 void init()
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
     cin>>n;
     for (int i=1; i<=4; i++)
         for (int j=1; j<=n; ++j)
             cin>>a[i][j],ma2=max(ma2,a[i][j]);
-}
-bool ok(int i,int j)
-{
-    for (int t=0; t<4; t++)
-        if (((i&(1<<t))!=0)&&((j&(1<<t))!=0))
-            return 0;
-    return 1;
 }
 int sum(int i,int j)
 {
@@ -37,17 +33,17 @@ void solve()
         {
             f[i][lst[j]]=oo;
             for (int k=0; k<8; k++)
-                if (ok(lst[j],lst[k]))
+                if ((lst[j]&lst[k])==0)
                     f[i][lst[j]]=max(f[i][lst[j]],f[i-1][lst[k]]+sum(i,lst[j]));
-                }
+        }
     }
     ma=max(f[n][lst[0]],ma);
     for (int i=1; i<8; i++)
         ma=max(f[n][lst[i]],ma);
-               cout<<((ma==0&&ma2<0)?ma2:ma)<<"\n";
-    }
+    cout<<((ma==0&&ma2<0)?ma2:ma)<<"\n";
+}
 
-   int main()
+int main()
 {
     init();
     solve();
