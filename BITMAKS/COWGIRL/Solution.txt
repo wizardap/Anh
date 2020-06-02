@@ -1,0 +1,13 @@
+Quy hoạch động trạng thái bitmask:
+ĐPT: O(2ⁿ*2ⁿ*n)
++Nhận xét: Do m*n ≤ 30 nên trong 2 số m,n luôn tồn tại
+1 số ≤ 5,lấy số nhỏ hơn làm cột (trong solution này thì là n).
++Mảng qhđ: F[i, j] 1 ≤ i ≤ m; 0 ≤ j ≤ 2ⁿ-1:số cách xếp thỏa
+mản các hàng 1 -> i và hàng i có trạng thái sắp xếp được mã hóa thành xâu nhị phân vs cơ số 10 bằng j.
++F[1, j] = 1 với 0 ≤ j ≤ 2ⁿ-1
++F[i, j] = 𝐹[𝑖 – 1, 𝑡] sao cho
+u =j and t thì u ko có 2 bit 1 nào kề nhau
+v = j or t thì v ko có 2 bit 0 nào kề nhau(trong n bit
+đầu tiên).
+Với i ≥ 2.
++Kết quả = sum(f[m][j]) với 0<=j<=2ⁿ-1 là các trạng thái của hàng m đã tính.
