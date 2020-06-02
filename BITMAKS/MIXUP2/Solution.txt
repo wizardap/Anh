@@ -1,0 +1,17 @@
+Thuật toán: Quy hoạch động trạng thái - Độ phức tạp O( 2^N * N^2 )
+Gọi s là số nhị phân 16 bits, có x bits 1 ( 16 - x bits 0 ), với ý nghĩa nếu bit thứ i là 1 thì con bò thứ i được chọn để sắp xếp vào hàng.
+
+=> s là trạng thái mà x con bò đã được chọn để sắp xếp vào hàng theo thứ tự hỗn loạn ( không quan tâm đến vị trí các con bò được s/x như thế nào ).
+
+Gọi f[i][s] = số cách để xếp con bò thứ i vào cuối hàng( hoặc đầu, sao cũng được ) theo thứ tự hỗn loạn với trạng thái s ( tất nhiên bit thứ i  của s phải được bật để sắp con bò i ).
+
+Gọi preS là trạng thái có được từ s bằng cách tắt bit thứ i ( cho bit i = 0 ), có nghĩa là xếp bò xong trạng thái preS, tiếp theo xếp thêm con bò thứ i thì ta được trạng thái s ( preS là trạng thái ngay trước s ).
+
+Xét lần lượt chỉ số của con bò thứ i với chỉ số j của các con bò trong trạng thái preS, nếu abs( a[i]-a[j] ) > K ( có nghĩa là xếp được với con bò thứ j ), thì :
+f[i][s] += f[j][preS] (  bò j và bò i lúc này đứng sau cùng của hàng và ghép thành một cặp với nhau, nên số cách xếp bò i thoả mãn cũng là số cách xếp bò j thoả mãn ),
+ nếu ngược lại abs( a[i] - a[j] ) <= K, thì không xếp được => không cộng.
+
+
+
+Kết quả là tổng f[i][S] với i = 0..N, S là cấu hình full bit 1 ( đã chọn hết tất cả bò ).
+Nguồn : nhannguyen95
